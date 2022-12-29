@@ -1,0 +1,17 @@
+<div class="main_container">
+  <div class="nav_container">
+    <ul>
+      <li [routerLinkActive] = "'active'" [routerLinkActiveOptions]="{exact:true}"><a routerLink='home'>Home</a></li>
+      <li [routerLinkActive] = "'active'"><a [routerLink]="'about'">About</a></li>
+      <li [routerLinkActive] = "'active'"><a [routerLink]="['contact']">Contact</a></li>
+      <li [routerLinkActive] = "'active'"><a routerLink='courses'>Courses</a></li>  
+      <span style="float: right; display: flex;">
+        <li (click)="login()"><a>Login</a></li>
+        <li (click)="logout()"><a>Logout</a></li>
+      </span>    
+    </ul>
+  </div>
+  <div class="component_container">
+    <router-outlet></router-outlet>
+  </div>
+</div> 

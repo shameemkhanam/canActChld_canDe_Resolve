@@ -1,0 +1,26 @@
+<div class="course_container">
+  <div>
+    <img src="{{course.image}}" alt="" width="560px" height="280px">
+  </div>
+  <div>
+    <h1 style="text-align: center;" *ngIf="!editMode">{{course.name}}</h1>
+    <div style="text-align: center;" *ngIf="editMode">
+      <input type="text" [(ngModel)]="course.name">
+    </div>
+  </div>
+  <div class="course_details">
+    <div style="margin: 0px 10px;"><b>Author : </b>{{course.author}}</div>
+    <div style="margin: 0px 10px;"><b>Duration : </b>{{course.duration}}</div>
+    <div style="margin: 0px 10px;"><b>Type : </b>{{course.type}}</div>
+  </div>
+  <div style="margin: 0px 10px;">
+    <h2>Price : ${{course.price}}</h2>
+  </div>
+  <div style="margin: 20px 10px;">
+    <p>{{course.description}}</p>
+  </div>
+  <!-- <a [routerLink]="['/courses/course', 101]">Go to first course</a> -->
+  <!-- <button [routerLink]="['/courses/course', course.id]" [queryParams]="{edit:true}">Edit</button> -->
+  <button (click)="appendQueryParams()">Edit</button>
+  <button (click)="editMode = false" [routerLink]="['/courses/course', course.id]">Update</button>
+</div>

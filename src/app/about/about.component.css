@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+  margin: 50px 0px;
+  border-bottom: 3px solid gray;
+}
+.heading_container {
+  border-bottom: 3px solid gray;
+}
+.para {
+  /* border: 1px solid red; */
+  width: 800px;
+  height: 500px;
+  margin: 80px auto;
+  padding: 50px 50px;
+  align-items: center;
+  box-shadow: 2px -2px 5px 5px rgb(185, 183, 183);
+}
