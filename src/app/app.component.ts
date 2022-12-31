@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { CoursesService } from './Services/courses.service';
 
@@ -11,8 +11,9 @@ import { CoursesService } from './Services/courses.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'AngularRouting';
+  displayLoadingIndicator = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) {}
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router) {}
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -21,6 +22,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.activatedRoute.fragment.subscribe((value) => {
       console.log(value);
       this.jumpTo(value as string);
+    });
+
+    this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationStart) {
+        this.displayLoadingIndicator = true;
+      }
+      if (
+        routerEvent instanceof NavigationEnd ||
+        routerEvent instanceof NavigationCancel ||
+        routerEvent instanceof NavigationError
+      ) {
+        this.displayLoadingIndicator = false;
+      }
     });
   }
 

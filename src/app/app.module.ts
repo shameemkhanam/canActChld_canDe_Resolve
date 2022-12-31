@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -17,8 +16,6 @@ import { AuthService } from './auth.service';
 import { CanDeactivateGuardService } from './canDeactivate_guard.service';
 import { CourseResolveService } from './course_resolve.service';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +27,13 @@ import { CourseResolveService } from './course_resolve.service';
     CourseComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [CoursesService, CourseGuardService, AuthService, CanDeactivateGuardService, CourseResolveService],
+  providers: [
+    CoursesService,
+    CourseGuardService,
+    AuthService,
+    CanDeactivateGuardService,
+    CourseResolveService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
